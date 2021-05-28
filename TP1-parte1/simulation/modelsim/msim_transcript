@@ -1,0 +1,53 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do TP1-parte1_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/sev-windowsvm/Desktop/TP1-parte1 {C:/Users/sev-windowsvm/Desktop/TP1-parte1/memoriaRAM.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module memoriaRAM
+# 
+# Top level modules:
+# 	memoriaRAM
+# 
+vsim work.memoriaRAM
+# vsim work.memoriaRAM 
+# Loading work.memoriaRAM
+# ** Error: (vsim-3033) C:/Users/sev-windowsvm/Desktop/TP1-parte1/memoriaRAM.v(85): Instantiation of 'altsyncram' failed. The design unit was not found.
+# 
+#         Region: /memoriaRAM
+#         Searched libraries:
+#             C:/Users/sev-windowsvm/Desktop/TP1-parte1/simulation/modelsim/rtl_work
+# Error loading design
+vsim -L altera_mf_ver work.memoriaRAM
+# vsim -L altera_mf_ver work.memoriaRAM 
+# Loading work.memoriaRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+add wave -position insertpoint  \
+sim:/memoriaRAM/address \
+sim:/memoriaRAM/clock \
+sim:/memoriaRAM/data \
+sim:/memoriaRAM/wren \
+sim:/memoriaRAM/q
+force -freeze sim:/memoriaRAM/address 00000000 0 -cancel 50
+force -freeze sim:/memoriaRAM/clock HiZ 20 -cancel 30
+force -freeze sim:/memoriaRAM/data 00000100 0 -cancel 50
+force -freeze sim:/memoriaRAM/wren 1 0 -cancel 50
+run
+restart
+force -freeze sim:/memoriaRAM/address 00000000 0 -cancel 50
+force -freeze sim:/memoriaRAM/data 00000100 0 -cancel 50
+force -freeze sim:/memoriaRAM/wren 1 0
+force -freeze sim:/memoriaRAM/clock 0 0, 1 {18 ps} -r 75
+run
+run
+restart

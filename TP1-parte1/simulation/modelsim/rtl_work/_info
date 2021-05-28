@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\sev-windowsvm\Desktop\TP1-parte1\simulation\modelsim
+vmemoriaRAM
+!i10b 1
+!s100 LA4i6omV1Dcgc_cIGGlA:1
+IVV2SD3hM:c5loD1cEX7dT2
+VC?=X0_G<T5Y7ShcC[4Q]a0
+Z1 dC:\Users\sev-windowsvm\Desktop\TP1-parte1\simulation\modelsim
+w1622219798
+8C:/Users/sev-windowsvm/Desktop/TP1-parte1/memoriaRAM.v
+FC:/Users/sev-windowsvm/Desktop/TP1-parte1/memoriaRAM.v
+L0 39
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1622219899.889000
+!s107 C:/Users/sev-windowsvm/Desktop/TP1-parte1/memoriaRAM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/sev-windowsvm/Desktop/TP1-parte1|C:/Users/sev-windowsvm/Desktop/TP1-parte1/memoriaRAM.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+C:/Users/sev-windowsvm/Desktop/TP1-parte1 -O0
+nmemoria@r@a@m
