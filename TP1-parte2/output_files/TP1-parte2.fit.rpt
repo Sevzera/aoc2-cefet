@@ -1,5 +1,5 @@
 Fitter report for TP1-parte2
-Fri May 28 13:57:52 2021
+Fri May 28 14:49:27 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -29,14 +29,15 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  21. Global & Other Fast Signals
  22. Non-Global High Fan-Out Signals
  23. Fitter RAM Summary
- 24. Other Routing Usage Summary
- 25. I/O Rules Summary
- 26. I/O Rules Details
- 27. I/O Rules Matrix
- 28. Fitter Device Options
- 29. Operating Settings and Conditions
- 30. Fitter Messages
- 31. Fitter Suppressed Messages
+ 24. |memoriaRAM|altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ALTSYNCRAM
+ 25. Other Routing Usage Summary
+ 26. I/O Rules Summary
+ 27. I/O Rules Details
+ 28. I/O Rules Matrix
+ 29. Fitter Device Options
+ 30. Operating Settings and Conditions
+ 31. Fitter Messages
+ 32. Fitter Suppressed Messages
 
 
 
@@ -62,7 +63,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Fri May 28 13:57:52 2021           ;
+; Fitter Status                      ; Successful - Fri May 28 14:49:27 2021           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; TP1-parte2                                      ;
 ; Top-level Entity Name              ; memoriaRAM                                      ;
@@ -327,7 +328,7 @@ The pin-out file can be found in C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-p
 ;                                             ;                   ;                                ;
 ; Internal Connections                        ;                   ;                                ;
 ;     -- Total Connections                    ; 53                ; 5                              ;
-;     -- Registered Connections               ; 8                 ; 0                              ;
+;     -- Registered Connections               ; 0                 ; 0                              ;
 ;                                             ;                   ;                                ;
 ; External Connections                        ;                   ;                                ;
 ;     -- Top                                  ; 0                 ; 0                              ;
@@ -620,7 +621,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+-----------+------+--------------+--------------+-------------------+------------------+----------------------------------------------------------------------------+--------------+
 ; |memoriaRAM                            ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 2048        ; 1    ; 0            ; 0       ; 0         ; 0         ; 26   ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |memoriaRAM                                                                ; work         ;
 ;    |altsyncram:altsyncram_component|   ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 2048        ; 1    ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |memoriaRAM|altsyncram:altsyncram_component                                ; work         ;
-;       |altsyncram_cif1:auto_generated| ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 2048        ; 1    ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |memoriaRAM|altsyncram:altsyncram_component|altsyncram_cif1:auto_generated ; work         ;
+;       |altsyncram_9oi1:auto_generated| ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 2048        ; 1    ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |memoriaRAM|altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated ; work         ;
 +----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+-----------+------+--------------+--------------+-------------------+------------------+----------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -641,8 +642,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; wren       ; Input    ; (6) 1313 ps   ; --            ; --                    ; --  ; --   ;
 ; clock      ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; data[0]    ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
-; address[0] ; Input    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
-; address[1] ; Input    ; --            ; (6) 1313 ps   ; --                    ; --  ; --   ;
+; address[0] ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
+; address[1] ; Input    ; (6) 1313 ps   ; --            ; --                    ; --  ; --   ;
 ; address[2] ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
 ; address[3] ; Input    ; (6) 1313 ps   ; --            ; --                    ; --  ; --   ;
 ; address[4] ; Input    ; (6) 1313 ps   ; --            ; --                    ; --  ; --   ;
@@ -654,8 +655,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; data[3]    ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
 ; data[4]    ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
 ; data[5]    ; Input    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
-; data[6]    ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
-; data[7]    ; Input    ; --            ; (6) 1314 ps   ; --                    ; --  ; --   ;
+; data[6]    ; Input    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
+; data[7]    ; Input    ; (6) 1314 ps   ; --            ; --                    ; --  ; --   ;
 +------------+----------+---------------+---------------+-----------------------+-----+------+
 
 
@@ -665,38 +666,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Source Pin / Fanout                                                                ; Pad To Core Index ; Setting ;
 +------------------------------------------------------------------------------------+-------------------+---------+
 ; wren                                                                               ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; clock                                                                              ;                   ;         ;
 ; data[0]                                                                            ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
 ; address[0]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
 ; address[1]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; address[2]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
 ; address[3]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; address[4]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; address[5]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
 ; address[6]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; address[7]                                                                         ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
 ; data[1]                                                                            ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; data[2]                                                                            ;                   ;         ;
 ; data[3]                                                                            ;                   ;         ;
 ; data[4]                                                                            ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
 ; data[5]                                                                            ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; data[6]                                                                            ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 ; data[7]                                                                            ;                   ;         ;
-;      - altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
+;      - altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
 +------------------------------------------------------------------------------------+-------------------+---------+
 
 
@@ -741,25 +742,65 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; address[0]~input                                                      ; 1       ;
 ; data[0]~input                                                         ; 1       ;
 ; wren~input                                                            ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[1] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[2] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[3] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[4] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[5] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[6] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[7] ; 1       ;
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|q_a[0] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[1] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[2] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[3] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[4] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[5] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[6] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[7] ; 1       ;
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|q_a[0] ; 1       ;
 +-----------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter RAM Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
-+---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+------+----------------+----------------------+-----------------+-----------------+
-; Name                                                                      ; Type ; Mode        ; Clock Mode   ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Port A Input Registers ; Port A Output Registers ; Port B Input Registers ; Port B Output Registers ; Size ; Implementation Port A Depth ; Implementation Port A Width ; Implementation Port B Depth ; Implementation Port B Width ; Implementation Bits ; M9Ks ; MIF  ; Location       ; Mixed Width RDW Mode ; Port A RDW Mode ; Port B RDW Mode ;
-+---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+------+----------------+----------------------+-----------------+-----------------+
-; altsyncram:altsyncram_component|altsyncram_cif1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; Single Clock ; 256          ; 8            ; --           ; --           ; yes                    ; yes                     ; --                     ; --                      ; 2048 ; 256                         ; 8                           ; --                          ; --                          ; 2048                ; 1    ; None ; M9K_X28_Y23_N0 ; Don't care           ; Old data        ; Old data        ;
-+---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+------+----------------+----------------------+-----------------+-----------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter RAM Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
++---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+----------------+----------------+----------------------+-----------------+-----------------+
+; Name                                                                      ; Type ; Mode        ; Clock Mode   ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Port A Input Registers ; Port A Output Registers ; Port B Input Registers ; Port B Output Registers ; Size ; Implementation Port A Depth ; Implementation Port A Width ; Implementation Port B Depth ; Implementation Port B Width ; Implementation Bits ; M9Ks ; MIF            ; Location       ; Mixed Width RDW Mode ; Port A RDW Mode ; Port B RDW Mode ;
++---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+----------------+----------------+----------------------+-----------------+-----------------+
+; altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; Single Clock ; 256          ; 8            ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 2048 ; 256                         ; 8                           ; --                          ; --                          ; 2048                ; 1    ; memoriaRAM.mif ; M9K_X28_Y23_N0 ; Don't care           ; Old data        ; Old data        ;
++---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+----------------+----------------+----------------------+-----------------+-----------------+
 Note: Fitter may spread logical memories into multiple blocks to improve timing. The actual required RAM blocks can be found in the Fitter Resource Usage section.
+
+
+RAM content values are presented in the following format: (Binary) (Octal) (Decimal) (Hexadecimal) 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; |memoriaRAM|altsyncram:altsyncram_component|altsyncram_9oi1:auto_generated|ALTSYNCRAM                                                                                                                                                                            ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+;   Addr   ;              +0              ;              +1              ;              +2              ;              +3              ;              +4              ;              +5              ;              +6              ;              +7              ;
++----------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+
+;0;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;8;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;16;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;24;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;32;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;40;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;48;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;56;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;64;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;72;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;80;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;88;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;96;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;104;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;112;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;120;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;128;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;136;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;144;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;152;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;160;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;168;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;176;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;184;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;192;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;200;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;208;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;216;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
+;224;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;
+;232;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;
+;240;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000000) (0) (0) (00)   ;
+;248;(00000000) (0) (0) (00)    ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;(00000001) (1) (1) (01)   ;(00000000) (0) (0) (00)   ;(00000001) (1) (1) (01)   ;
 
 
 +-----------------------------------------------------------+
@@ -769,7 +810,7 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 +-----------------------------------+-----------------------+
 ; Block interconnects               ; 25 / 42,960 ( < 1 % ) ;
 ; C16 interconnects                 ; 14 / 1,518 ( < 1 % )  ;
-; C4 interconnects                  ; 28 / 26,928 ( < 1 % ) ;
+; C4 interconnects                  ; 32 / 26,928 ( < 1 % ) ;
 ; GXB block output buffers          ; 0 / 1,200 ( 0 % )     ;
 ; Global clocks                     ; 1 / 20 ( 5 % )        ;
 ; Interquad Reference Clock Outputs ; 0 / 1 ( 0 % )         ;
@@ -777,8 +818,8 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 ; Interquad TXRX PCSRX outputs      ; 0 / 4 ( 0 % )         ;
 ; Interquad TXRX PCSTX outputs      ; 0 / 4 ( 0 % )         ;
 ; Local interconnects               ; 0 / 14,400 ( 0 % )    ;
-; R24 interconnects                 ; 9 / 1,710 ( < 1 % )   ;
-; R4 interconnects                  ; 26 / 37,740 ( < 1 % ) ;
+; R24 interconnects                 ; 7 / 1,710 ( < 1 % )   ;
+; R4 interconnects                  ; 29 / 37,740 ( < 1 % ) ;
 +-----------------------------------+-----------------------+
 
 
@@ -993,20 +1034,20 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.14 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.09 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (169177): 1 pins must meet Altera requirements for 3.3-, 3.0-, and 2.5-V interfaces. For more information, refer to AN 447: Interfacing Cyclone IV GX Devices with 3.3/3.0/2.5-V LVTTL/LVCMOS I/O Systems.
     Info (169178): Pin clock uses I/O standard 2.5 V at J7
 Info (144001): Generated suppressed messages file C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/output_files/TP1-parte2.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 4975 megabytes
-    Info: Processing ended: Fri May 28 13:57:52 2021
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4967 megabytes
+    Info: Processing ended: Fri May 28 14:49:27 2021
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 
 +----------------------------+

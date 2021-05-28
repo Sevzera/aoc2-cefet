@@ -5,11 +5,11 @@ cModel Technology
 Z0 dC:\Users\sev-windowsvm\Desktop\aoc2-cefet\TP1-parte2\simulation\modelsim
 vmemoriaRAM
 !i10b 1
-!s100 `A@]?IMW<Q2fNY[3flXNc1
-IL>S6hli^ANdg@d;?_i]bW2
+!s100 9WlOci7mU;Ecf;PiVD`lc1
+Ig=3N_I=0DM9LE>;Ic:@322
 VC?=X0_G<T5Y7ShcC[4Q]a0
 Z1 dC:\Users\sev-windowsvm\Desktop\aoc2-cefet\TP1-parte2\simulation\modelsim
-w1622221038
+w1622224150
 8C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v
 FC:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v
 L0 39
@@ -17,7 +17,7 @@ OV;L;10.1d;51
 r1
 !s85 0
 31
-!s108 1622221089.654000
+!s108 1622224763.298000
 !s107 C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2|C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v|
 !s101 -O0

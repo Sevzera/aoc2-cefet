@@ -17,36 +17,3 @@
 # Top level modules:
 # 	memoriaRAM
 # 
-vsim work.memoriaRAM
-# vsim work.memoriaRAM 
-# Loading work.memoriaRAM
-# ** Error: (vsim-3033) C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v(85): Instantiation of 'altsyncram' failed. The design unit was not found.
-# 
-#         Region: /memoriaRAM
-#         Searched libraries:
-#             C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/simulation/modelsim/rtl_work
-# Error loading design
-vsim work.memoriaRAM
-# vsim work.memoriaRAM 
-# Loading work.memoriaRAM
-# ** Error: (vsim-3033) C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v(85): Instantiation of 'altsyncram' failed. The design unit was not found.
-# 
-#         Region: /memoriaRAM
-#         Searched libraries:
-#             C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/simulation/modelsim/rtl_work
-# Error loading design
-vsim work.memoriaRAM
-# vsim work.memoriaRAM 
-# Loading work.memoriaRAM
-# ** Error: (vsim-3033) C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/memoriaRAM.v(85): Instantiation of 'altsyncram' failed. The design unit was not found.
-# 
-#         Region: /memoriaRAM
-#         Searched libraries:
-#             C:/Users/sev-windowsvm/Desktop/aoc2-cefet/TP1-parte2/simulation/modelsim/rtl_work
-# Error loading design
-vsim -L altera_mf_ver work.memoriaRAM
-# vsim -L altera_mf_ver work.memoriaRAM 
-# Loading work.memoriaRAM
-# Loading altera_mf_ver.altsyncram
-# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
-# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
