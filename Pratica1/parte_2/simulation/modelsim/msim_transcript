@@ -1,0 +1,63 @@
+# Reading D:/Programas/Quartus/modelsim_ase/tcl/vsim/pref.tcl 
+# Load canceled
+# do parte_2_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying D:\Programas\Quartus\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied D:\Programas\Quartus\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_2 {C:/Users/Victor/Desktop/Pratica_1/parte_2/MemoriaRAM.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MemoriaRAM
+# 
+# Top level modules:
+# 	MemoriaRAM
+# 
+vsim +altera -L altera_mf_ver -do parte_2_run_msim_rtl_verilog.do -l msim_transcript -gui work.MemoriaRAM
+# vsim +altera -L altera_mf_ver -do parte_2_run_msim_rtl_verilog.do -l msim_transcript -gui work.MemoriaRAM 
+# Loading work.MemoriaRAM
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# do parte_2_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_2 {C:/Users/Victor/Desktop/Pratica_1/parte_2/MemoriaRAM.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MemoriaRAM
+# 
+# Top level modules:
+# 	MemoriaRAM
+# 
+add wave -position end  sim:/MemoriaRAM/address
+add wave -position end  sim:/MemoriaRAM/clock
+add wave -position end  sim:/MemoriaRAM/data
+add wave -position end  sim:/MemoriaRAM/wren
+add wave -position end  sim:/MemoriaRAM/q
+wave create -driver freeze -pattern counter -startvalue 00000000 -endvalue 11111111 -type Range -direction Up -period 50ps -step 1 -repeat forever -range 7 0 -starttime 0ps -endtime 1000ps sim:/MemoriaRAM/address
+add wave -position 0 -autoscale 1 -format Literal -height 17 -editable 2 Edit:/MemoriaRAM/address
+wave create -driver freeze -pattern counter -startvalue 00000000 -endvalue 11111111 -type Range -direction Up -period 100ps -step 1 -repeat forever -range 7 0 -starttime 0ps -endtime 1000ps sim:/MemoriaRAM/address
+add wave -position 0 -autoscale 1 -format Literal -height 17 -editable 2 Edit:/MemoriaRAM/address
+force -freeze sim:/MemoriaRAM/clock 0 0, 1 {50 ps} -r 100
+force -freeze sim:/MemoriaRAM/wren 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run

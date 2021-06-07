@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Victor\Desktop\Pratica_1\parte_2\simulation\modelsim
+vMemoriaRAM
+!i10b 1
+!s100 5mGcQfiRTUON@k9VaiAJj2
+I:AfnbzL611J>oU>6lbdTa2
+VPo>H[D;^`K1LKfIWFB<Xf1
+Z1 dC:\Users\Victor\Desktop\Pratica_1\parte_2\simulation\modelsim
+w1622575605
+8C:/Users/Victor/Desktop/Pratica_1/parte_2/MemoriaRAM.v
+FC:/Users/Victor/Desktop/Pratica_1/parte_2/MemoriaRAM.v
+L0 39
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1622575741.347000
+!s107 C:/Users/Victor/Desktop/Pratica_1/parte_2/MemoriaRAM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Victor/Desktop/Pratica_1/parte_2|C:/Users/Victor/Desktop/Pratica_1/parte_2/MemoriaRAM.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_2 -O0
+n@memoria@r@a@m
