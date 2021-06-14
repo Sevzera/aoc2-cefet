@@ -1,0 +1,109 @@
+# Reading D:/Programas/Quartus/modelsim_ase/tcl/vsim/pref.tcl 
+# do parte_3_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying D:\Programas\Quartus\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied D:\Programas\Quartus\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_3 {C:/Users/Victor/Desktop/Pratica_1/parte_3/m_principal.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module m_principal
+# 
+# Top level modules:
+# 	m_principal
+# vlog -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_3 {C:/Users/Victor/Desktop/Pratica_1/parte_3/m_cache.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module m_cache
+# 
+# Top level modules:
+# 	m_cache
+# 
+vsim +altera -L altera_mf_ver -do parte_3_run_msim_rtl_verilog.do -l msim_transcript -gui work.m_cache
+# vsim +altera -L altera_mf_ver -do parte_3_run_msim_rtl_verilog.do -l msim_transcript -gui work.m_cache 
+# Loading work.m_cache
+# Loading work.m_principal
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# do parte_3_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_3 {C:/Users/Victor/Desktop/Pratica_1/parte_3/m_principal.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module m_principal
+# 
+# Top level modules:
+# 	m_principal
+# vlog -vlog01compat -work work +incdir+C:/Users/Victor/Desktop/Pratica_1/parte_3 {C:/Users/Victor/Desktop/Pratica_1/parte_3/m_cache.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module m_cache
+# 
+# Top level modules:
+# 	m_cache
+# 
+add wave -position end  sim:/m_cache/clock
+add wave -position end  sim:/m_cache/test_data
+add wave -position end  sim:/m_cache/test_tag
+add wave -position end  sim:/m_cache/test_wren
+add wave -position end  sim:/m_cache/mp_address
+add wave -position end  sim:/m_cache/mp_clock
+add wave -position end  sim:/m_cache/mp_data
+add wave -position end  sim:/m_cache/mp_out
+add wave -position end  sim:/m_cache/mp_wren
+force -freeze sim:/m_cache/clock 0 0, 1 {50 ps} -r 100
+force -freeze sim:/m_cache/test_tag 00000000 0
+force -freeze sim:/m_cache/test_data 00000000 0
+force -freeze sim:/m_cache/test_wren 0 0
+force -freeze sim:/m_cache/test_tag 00000001 0
+run
+run
+run
+run
+run
+restart
+# Loading work.m_cache
+# Loading work.m_principal
+force -freeze sim:/m_cache/clock 0 0, 1 {50 ps} -r 100
+force -freeze sim:/m_cache/test_tag 00000001 0
+force -freeze sim:/m_cache/test_data 00000000 0
+force -freeze sim:/m_cache/test_wren 0 0
+add wave -position end  sim:/m_cache/mc_address
+add wave -position end  sim:/m_cache/mc_out
+add wave -position end  sim:/m_cache/lru
+run
+force -freeze sim:/m_cache/test_tag 00000101 0
+run
+force -freeze sim:/m_cache/test_tag 00001000 0
+run
+run
+force -freeze sim:/m_cache/test_tag 00000000 0
+force -freeze sim:/m_cache/test_wren 1 0
+force -freeze sim:/m_cache/test_data 00000100 0
+run
+force -freeze sim:/m_cache/test_data 00001000 0
+force -freeze sim:/m_cache/test_tag 00001000 0
+force -freeze sim:/m_cache/test_data 00000010 0
+run
+force -freeze sim:/m_cache/test_tag 00000010 0
+force -freeze sim:/m_cache/test_data 00000111 0
+run
+force -freeze sim:/m_cache/test_tag 00000101 0
+force -freeze sim:/m_cache/test_data 00000110 0
+run
+force -freeze sim:/m_cache/test_wren 0 0
+force -freeze sim:/m_cache/test_tag 0000001 0
+force -freeze sim:/m_cache/test_tag 000000001 0
+force -freeze sim:/m_cache/test_tag 00000001 0
+force -freeze sim:/m_cache/test_data 00000000 0
+run
+restart

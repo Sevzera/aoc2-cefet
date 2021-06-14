@@ -1,0 +1,7 @@
+module m_cache (clock, test_tag, test_data, test_wren);
+
+// Declarando inputs
+input clock, test_wren;
+input [7:0] test_tag, test_data;
+
+endmodule
