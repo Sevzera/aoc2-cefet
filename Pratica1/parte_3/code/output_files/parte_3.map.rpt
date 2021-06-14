@@ -1,5 +1,5 @@
 Analysis & Synthesis report for parte_3
-Fri Jun 11 19:42:26 2021
+Mon Jun 14 18:08:40 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -47,7 +47,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 11 19:42:26 2021           ;
+; Analysis & Synthesis Status        ; Successful - Mon Jun 14 18:08:40 2021           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; parte_3                                         ;
 ; Top-level Entity Name              ; m_cache                                         ;
@@ -165,25 +165,25 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                       ;
-+----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                               ; Library ;
-+----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------+---------+
-; memoria_ram_inicialization.mif   ; yes             ; User Memory Initialization File  ; C:/Users/Victor/Desktop/Pratica_1/parte_3/memoria_ram_inicialization.mif   ;         ;
-; m_principal.v                    ; yes             ; User Wizard-Generated File       ; C:/Users/Victor/Desktop/Pratica_1/parte_3/m_principal.v                    ;         ;
-; m_cache.v                        ; yes             ; User Verilog HDL File            ; C:/Users/Victor/Desktop/Pratica_1/parte_3/m_cache.v                        ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal130.inc                   ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                       ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                       ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_uck1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Victor/Desktop/Pratica_1/parte_3/db/altsyncram_uck1.tdf           ;         ;
-+----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+----------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+----------------------------------+-------------------------------------------------------------------------------+---------+
+; memoria_ram_inicialization.mif   ; yes             ; User Memory Initialization File  ; C:/Users/Victor/Desktop/Pratica_1/parte_3/code/memoria_ram_inicialization.mif ;         ;
+; m_principal.v                    ; yes             ; User Wizard-Generated File       ; C:/Users/Victor/Desktop/Pratica_1/parte_3/code/m_principal.v                  ;         ;
+; m_cache.v                        ; yes             ; User Verilog HDL File            ; C:/Users/Victor/Desktop/Pratica_1/parte_3/code/m_cache.v                      ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altsyncram.tdf           ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/stratix_ram_block.inc    ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/lpm_mux.inc              ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/lpm_decode.inc           ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/aglobal130.inc           ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/a_rdenreg.inc            ;         ;
+; altrom.inc                       ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altrom.inc               ;         ;
+; altram.inc                       ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altram.inc               ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                     ; d:/programas/quartus/quartus/libraries/megafunctions/altdpram.inc             ;         ;
+; db/altsyncram_uck1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Victor/Desktop/Pratica_1/parte_3/code/db/altsyncram_uck1.tdf         ;         ;
++----------------------------------+-----------------+----------------------------------+-------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------+
@@ -210,109 +210,126 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                      ;
-+--------+--------------+---------+--------------+--------------+----------------------------------+---------------------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                  ; IP Include File                                         ;
-+--------+--------------+---------+--------------+--------------+----------------------------------+---------------------------------------------------------+
-; Altera ; RAM: 1-PORT  ; 13.0    ; N/A          ; N/A          ; |m_cache|m_principal:m_principal ; C:/Users/Victor/Desktop/Pratica_1/parte_3/m_principal.v ;
-+--------+--------------+---------+--------------+--------------+----------------------------------+---------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                           ;
++--------+--------------+---------+--------------+--------------+----------------------------------+--------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                  ; IP Include File                                              ;
++--------+--------------+---------+--------------+--------------+----------------------------------+--------------------------------------------------------------+
+; Altera ; RAM: 1-PORT  ; 13.0    ; N/A          ; N/A          ; |m_cache|m_principal:m_principal ; C:/Users/Victor/Desktop/Pratica_1/parte_3/code/m_principal.v ;
++--------+--------------+---------+--------------+--------------+----------------------------------+--------------------------------------------------------------+
 
 
-+-------------------------------------------------------------+
-; Registers Removed During Synthesis                          ;
-+----------------------------------------+--------------------+
-; Register name                          ; Reason for Removal ;
-+----------------------------------------+--------------------+
-; mc_address[3][1][6]                    ; Lost fanout        ;
-; mc_address[3][1][5]                    ; Lost fanout        ;
-; mc_address[3][1][4]                    ; Lost fanout        ;
-; mc_address[3][1][3]                    ; Lost fanout        ;
-; mc_address[3][1][2]                    ; Lost fanout        ;
-; mc_address[3][1][1]                    ; Lost fanout        ;
-; mc_address[3][1][0]                    ; Lost fanout        ;
-; valido[0..3]                           ; Lost fanout        ;
-; lru[0][1]                              ; Lost fanout        ;
-; lru[3][1]                              ; Lost fanout        ;
-; lru[0][0]                              ; Lost fanout        ;
-; lru[1][1]                              ; Lost fanout        ;
-; lru[1][0]                              ; Lost fanout        ;
-; lru[3][0]                              ; Lost fanout        ;
-; mc_address[3][1][7]                    ; Lost fanout        ;
-; lru[2][1]                              ; Lost fanout        ;
-; lru[2][0]                              ; Lost fanout        ;
-; mc_address[3][0][0]                    ; Lost fanout        ;
-; mc_address[3][0][1]                    ; Lost fanout        ;
-; mc_address[3][0][2]                    ; Lost fanout        ;
-; mc_address[3][0][3]                    ; Lost fanout        ;
-; mc_address[3][0][4]                    ; Lost fanout        ;
-; mc_address[3][0][5]                    ; Lost fanout        ;
-; mc_address[3][0][6]                    ; Lost fanout        ;
-; mc_address[3][0][7]                    ; Lost fanout        ;
-; mc_address[2][1][0]                    ; Lost fanout        ;
-; mc_address[2][1][1]                    ; Lost fanout        ;
-; mc_address[2][1][2]                    ; Lost fanout        ;
-; mc_address[2][1][3]                    ; Lost fanout        ;
-; mc_address[2][1][4]                    ; Lost fanout        ;
-; mc_address[2][1][5]                    ; Lost fanout        ;
-; mc_address[2][1][6]                    ; Lost fanout        ;
-; mc_address[2][1][7]                    ; Lost fanout        ;
-; mc_address[2][0][0]                    ; Lost fanout        ;
-; mc_address[2][0][1]                    ; Lost fanout        ;
-; mc_address[2][0][2]                    ; Lost fanout        ;
-; mc_address[2][0][3]                    ; Lost fanout        ;
-; mc_address[2][0][4]                    ; Lost fanout        ;
-; mc_address[2][0][5]                    ; Lost fanout        ;
-; mc_address[2][0][6]                    ; Lost fanout        ;
-; mc_address[2][0][7]                    ; Lost fanout        ;
-; mc_address[1][1][0]                    ; Lost fanout        ;
-; mc_address[1][1][1]                    ; Lost fanout        ;
-; mc_address[1][1][2]                    ; Lost fanout        ;
-; mc_address[1][1][3]                    ; Lost fanout        ;
-; mc_address[1][1][4]                    ; Lost fanout        ;
-; mc_address[1][1][5]                    ; Lost fanout        ;
-; mc_address[1][1][6]                    ; Lost fanout        ;
-; mc_address[1][1][7]                    ; Lost fanout        ;
-; mc_address[1][0][0]                    ; Lost fanout        ;
-; mc_address[1][0][1]                    ; Lost fanout        ;
-; mc_address[1][0][2]                    ; Lost fanout        ;
-; mc_address[1][0][3]                    ; Lost fanout        ;
-; mc_address[1][0][4]                    ; Lost fanout        ;
-; mc_address[1][0][5]                    ; Lost fanout        ;
-; mc_address[1][0][6]                    ; Lost fanout        ;
-; mc_address[1][0][7]                    ; Lost fanout        ;
-; mc_address[0][1][0]                    ; Lost fanout        ;
-; mc_address[0][1][1]                    ; Lost fanout        ;
-; mc_address[0][1][2]                    ; Lost fanout        ;
-; mc_address[0][1][3]                    ; Lost fanout        ;
-; mc_address[0][1][4]                    ; Lost fanout        ;
-; mc_address[0][1][5]                    ; Lost fanout        ;
-; mc_address[0][1][6]                    ; Lost fanout        ;
-; mc_address[0][1][7]                    ; Lost fanout        ;
-; mc_address[0][0][0]                    ; Lost fanout        ;
-; mc_address[0][0][1]                    ; Lost fanout        ;
-; mc_address[0][0][2]                    ; Lost fanout        ;
-; mc_address[0][0][3]                    ; Lost fanout        ;
-; mc_address[0][0][4]                    ; Lost fanout        ;
-; mc_address[0][0][5]                    ; Lost fanout        ;
-; mc_address[0][0][6]                    ; Lost fanout        ;
-; mc_address[0][0][7]                    ; Lost fanout        ;
-; mp_clock                               ; Lost fanout        ;
-; mp_wren                                ; Lost fanout        ;
-; mp_data[0..7]                          ; Lost fanout        ;
-; mp_address[0..7]                       ; Lost fanout        ;
-; Total Number of Removed Registers = 94 ;                    ;
-+----------------------------------------+--------------------+
++--------------------------------------------------------------+
+; Registers Removed During Synthesis                           ;
++-----------------------------------------+--------------------+
+; Register name                           ; Reason for Removal ;
++-----------------------------------------+--------------------+
+; mc_address[2][1][1]                     ; Lost fanout        ;
+; mc_address[2][1][0]                     ; Lost fanout        ;
+; mc_address[3][0][7]                     ; Lost fanout        ;
+; mc_address[3][0][6]                     ; Lost fanout        ;
+; mc_address[3][0][5]                     ; Lost fanout        ;
+; mc_address[3][0][4]                     ; Lost fanout        ;
+; mc_address[3][0][3]                     ; Lost fanout        ;
+; mc_address[3][0][2]                     ; Lost fanout        ;
+; lru[2][0]                               ; Lost fanout        ;
+; lru[3][1]                               ; Lost fanout        ;
+; mc_address[3][0][1]                     ; Lost fanout        ;
+; lru[3][0]                               ; Lost fanout        ;
+; mc_address[3][0][0]                     ; Lost fanout        ;
+; mc_address[3][1][7]                     ; Lost fanout        ;
+; mc_address[3][1][6]                     ; Lost fanout        ;
+; mc_address[3][1][5]                     ; Lost fanout        ;
+; mc_address[3][1][4]                     ; Lost fanout        ;
+; mc_address[3][1][3]                     ; Lost fanout        ;
+; mc_address[3][1][2]                     ; Lost fanout        ;
+; mc_address[3][1][1]                     ; Lost fanout        ;
+; mc_address[3][1][0]                     ; Lost fanout        ;
+; valido[0..3]                            ; Lost fanout        ;
+; dirty[0..3]                             ; Lost fanout        ;
+; mp_data[0..7]                           ; Lost fanout        ;
+; lru[0][1]                               ; Lost fanout        ;
+; lru[0][0]                               ; Lost fanout        ;
+; lru[1][1]                               ; Lost fanout        ;
+; lru[1][0]                               ; Lost fanout        ;
+; lru[2][1]                               ; Lost fanout        ;
+; mc_address[2][1][2]                     ; Lost fanout        ;
+; mc_address[2][1][3]                     ; Lost fanout        ;
+; mc_address[2][1][4]                     ; Lost fanout        ;
+; mc_address[2][1][5]                     ; Lost fanout        ;
+; mc_address[2][1][6]                     ; Lost fanout        ;
+; mc_address[2][1][7]                     ; Lost fanout        ;
+; mc_address[2][0][0]                     ; Lost fanout        ;
+; mc_address[2][0][1]                     ; Lost fanout        ;
+; mc_address[2][0][2]                     ; Lost fanout        ;
+; mc_address[2][0][3]                     ; Lost fanout        ;
+; mc_address[2][0][4]                     ; Lost fanout        ;
+; mc_address[2][0][5]                     ; Lost fanout        ;
+; mc_address[2][0][6]                     ; Lost fanout        ;
+; mc_address[2][0][7]                     ; Lost fanout        ;
+; mc_address[1][1][0]                     ; Lost fanout        ;
+; mc_address[1][1][1]                     ; Lost fanout        ;
+; mc_address[1][1][2]                     ; Lost fanout        ;
+; mc_address[1][1][3]                     ; Lost fanout        ;
+; mc_address[1][1][4]                     ; Lost fanout        ;
+; mc_address[1][1][5]                     ; Lost fanout        ;
+; mc_address[1][1][6]                     ; Lost fanout        ;
+; mc_address[1][1][7]                     ; Lost fanout        ;
+; mc_address[1][0][0]                     ; Lost fanout        ;
+; mc_address[1][0][1]                     ; Lost fanout        ;
+; mc_address[1][0][2]                     ; Lost fanout        ;
+; mc_address[1][0][3]                     ; Lost fanout        ;
+; mc_address[1][0][4]                     ; Lost fanout        ;
+; mc_address[1][0][5]                     ; Lost fanout        ;
+; mc_address[1][0][6]                     ; Lost fanout        ;
+; mc_address[1][0][7]                     ; Lost fanout        ;
+; mc_address[0][1][0]                     ; Lost fanout        ;
+; mc_address[0][1][1]                     ; Lost fanout        ;
+; mc_address[0][1][2]                     ; Lost fanout        ;
+; mc_address[0][1][3]                     ; Lost fanout        ;
+; mc_address[0][1][4]                     ; Lost fanout        ;
+; mc_address[0][1][5]                     ; Lost fanout        ;
+; mc_address[0][1][6]                     ; Lost fanout        ;
+; mc_address[0][1][7]                     ; Lost fanout        ;
+; mc_address[0][0][0]                     ; Lost fanout        ;
+; mc_address[0][0][1]                     ; Lost fanout        ;
+; mc_address[0][0][2]                     ; Lost fanout        ;
+; mc_address[0][0][3]                     ; Lost fanout        ;
+; mc_address[0][0][4]                     ; Lost fanout        ;
+; mc_address[0][0][5]                     ; Lost fanout        ;
+; mc_address[0][0][6]                     ; Lost fanout        ;
+; mc_address[0][0][7]                     ; Lost fanout        ;
+; mp_wren                                 ; Lost fanout        ;
+; mp_clock                                ; Lost fanout        ;
+; mp_address[0..7]                        ; Lost fanout        ;
+; mc_address_aux[1][0]                    ; Lost fanout        ;
+; mc_address_aux[1][1]                    ; Lost fanout        ;
+; mc_address_aux[1][2]                    ; Lost fanout        ;
+; mc_address_aux[1][3]                    ; Lost fanout        ;
+; mc_address_aux[1][4]                    ; Lost fanout        ;
+; mc_address_aux[1][5]                    ; Lost fanout        ;
+; mc_address_aux[1][6]                    ; Lost fanout        ;
+; mc_address_aux[1][7]                    ; Lost fanout        ;
+; mc_address_aux[0][0]                    ; Lost fanout        ;
+; mc_address_aux[0][1]                    ; Lost fanout        ;
+; mc_address_aux[0][2]                    ; Lost fanout        ;
+; mc_address_aux[0][3]                    ; Lost fanout        ;
+; mc_address_aux[0][4]                    ; Lost fanout        ;
+; mc_address_aux[0][5]                    ; Lost fanout        ;
+; mc_address_aux[0][6]                    ; Lost fanout        ;
+; mc_address_aux[0][7]                    ; Lost fanout        ;
+; Total Number of Removed Registers = 114 ;                    ;
++-----------------------------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                              ;
-+---------------------+--------------------+---------------------------------------------------------------+
-; Register name       ; Reason for Removal ; Registers Removed due to This Register                        ;
-+---------------------+--------------------+---------------------------------------------------------------+
-; mc_address[3][1][6] ; Lost Fanouts       ; valido[0], valido[1], valido[2], valido[3], mp_clock, mp_wren ;
-; lru[0][1]           ; Lost Fanouts       ; lru[0][0], lru[1][1], lru[1][0], lru[2][1]                    ;
-+---------------------+--------------------+---------------------------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                         ;
++---------------------+--------------------+------------------------------------------+
+; Register name       ; Reason for Removal ; Registers Removed due to This Register   ;
++---------------------+--------------------+------------------------------------------+
+; mc_address[2][1][1] ; Lost Fanouts       ; valido[3], mp_data[1], mp_wren, mp_clock ;
+; mc_address[2][1][0] ; Lost Fanouts       ; mp_data[0]                               ;
++---------------------+--------------------+------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -435,7 +452,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Jun 11 19:42:24 2021
+    Info: Processing started: Mon Jun 14 18:08:38 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off parte_3 -c parte_3
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file m_principal.v
@@ -445,10 +462,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file m_cache
     Info (12023): Found entity 1: m_cache
 Info (12127): Elaborating entity "m_cache" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at m_cache.v(17): object "mc_out" assigned a value but never read
-Warning (10235): Verilog HDL Always Construct warning at m_cache.v(40): variable "test_wren" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10230): Verilog HDL assignment warning at m_cache.v(145): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at m_cache.v(151): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at m_cache.v(158): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at m_cache.v(161): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at m_cache.v(167): truncated value with size 32 to match size of target (2)
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "mc_address" into its bus
 Info (12128): Elaborating entity "m_principal" for hierarchy "m_principal:m_principal"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "m_principal:m_principal|altsyncram:altsyncram_component"
@@ -482,7 +497,7 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "m_principal:m_principal|altsyncram:altsyncram_component|altsyncram_uck1:auto_generated|q_a[5]"
         Warning (14320): Synthesized away node "m_principal:m_principal|altsyncram:altsyncram_component|altsyncram_uck1:auto_generated|q_a[6]"
         Warning (14320): Synthesized away node "m_principal:m_principal|altsyncram:altsyncram_component|altsyncram_uck1:auto_generated|q_a[7]"
-Info (17049): 94 registers lost all their fanouts during netlist optimizations.
+Info (17049): 114 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 18 input pin(s) that do not drive logic
@@ -507,10 +522,10 @@ Warning (21074): Design contains 18 input pin(s) that do not drive logic
 Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 0 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 36 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 34 warnings
     Info: Peak virtual memory: 4643 megabytes
-    Info: Processing ended: Fri Jun 11 19:42:26 2021
+    Info: Processing ended: Mon Jun 14 18:08:40 2021
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 

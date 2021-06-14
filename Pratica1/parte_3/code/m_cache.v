@@ -17,8 +17,8 @@ reg [1:0] lru [0:3];
 reg [7:0] mc_out;
 
 // Intermediarias
-integer i, lastLRU, oldLRU, hitIndex, hit, break;
-
+integer i, lastLRU, oldLRU, hitIndex, hit, break, lruValue, skipWB;
+reg [7:0] mc_address_aux [0:1];
 
 // Valores iniciais da memoria cache definidos a partir do codigo teste
 initial begin
@@ -35,9 +35,9 @@ initial begin
 end
 
 
-always@(test_tag) begin
-	i=0; lastLRU=0; oldLRU=0; hitIndex=0; hit=0; break=0;
-	mc_wren = test_wren;
+always@(posedge clock) begin
+	i=0; lastLRU=0; oldLRU=0; hitIndex=0; hit=0; break=0; lruValue=0; skipWB=0; // Variaveis intermediarias
+	mc_wren = test_wren; mc_out = 0; // Controle da cache
 	
 	// Verificar se houve hit
 	for (i=0; i<4; i=i+1) begin
@@ -49,7 +49,7 @@ always@(test_tag) begin
 			end
 			else if(test_tag == mc_address[i][0] && valido[i] == 0) begin // Miss
 				hitIndex = i;
-				hit = 0;
+				hit = 1;
 				break = 1;
 			end
 			else begin // Miss
@@ -67,59 +67,42 @@ always@(test_tag) begin
 		end
 	end
 	
-end
-
-always@(posedge clock) begin
-	// Write back
-	if (hit == 1) begin
-		if (dirty[hitIndex] == 1) begin
-			mp_address = mc_address[hitIndex][0];
-			mp_data = mc_address[hitIndex][1];
-			mp_wren = 1;
-			mp_clock = 1;
-			#2
-			#10 mp_clock = 0; mp_wren = 0;
-		end
-	end
-	else begin
-		if (dirty[lastLRU] == 1) begin
-			mp_address = mc_address[lastLRU][0];
-			mp_data = mc_address[lastLRU][1];
-			mp_clock = 1;
-			#2
-			#10 mp_clock = 0; mp_wren = 0;
-		end
-	end
-	
 	
 	// Operacao de read
 	if (mc_wren == 0) begin
 		if (hit == 1) begin
-			mc_out = mc_address[hitIndex][1];
-			dirty[hitIndex] = 0;
-		end
-		else begin
-			if (valido[hitIndex] == 0) begin
-				mp_address = test_tag;
+			if (valido[hitIndex] == 1) begin // Hit
+				mc_out = mc_address[hitIndex][1];
+			end
+			else begin // Ocorreu hit, porem o valido = 0
+				mc_address_aux[0] = mc_address[hitIndex][0];
+				mc_address_aux[1] = mc_address[hitIndex][1];
+				
+				mp_address = test_tag; 
 				mp_clock = 1;
 				mp_wren = 0;
-				#2
-				#10 mp_clock = 0; mp_wren = 0;
+				#2 mp_clock = 0; mp_wren = 0;
+				
 				mc_address[hitIndex][0] = mp_address;
 				mc_address[hitIndex][1] = mp_out;
-				dirty[hitIndex] = 0;
+				#2 mc_out = mc_address[hitIndex][1];
+				
 				valido[hitIndex] = 1;
 			end
-			else begin
-				mp_address = test_tag;
-				mp_clock = 1;
-				mp_wren = 0;
-				#2
-				#10 mp_clock = 0; mp_wren = 0;
-				mc_address[lastLRU][0] = mp_address;
-				mc_address[lastLRU][1] = mp_out;
-				dirty[hitIndex] = 0;
-			end
+		end
+		else begin	// Ocorreu miss e valido = 1
+			mc_address_aux[0] = mc_address[lastLRU][0];
+			mc_address_aux[1] = mc_address[lastLRU][1];
+			
+			mp_address = test_tag;
+			mp_clock = 1;
+			mp_wren = 0;
+			#2 mp_clock = 0; mp_wren = 0;
+			
+			
+			mc_address[lastLRU][0] = mp_address;
+			mc_address[lastLRU][1] = mp_out;
+			#2 mc_out = mc_address[lastLRU][1];
 		end
 	end
 	
@@ -131,32 +114,58 @@ always@(posedge clock) begin
 			dirty[hitIndex] = 1;
 		end
 		else begin
+			mc_address_aux[0] = mc_address[lastLRU][0];
+			mc_address_aux[1] = mc_address[lastLRU][1];
+			
 			mc_address[lastLRU][0] = test_tag;
 			mc_address[lastLRU][1] = test_data;
-			dirty[lastLRU] = 1;
+			
+			if (dirty[lastLRU] == 0) begin
+				dirty[lastLRU] = 1; skipWB = 1;
+			end
 		end
+	end
+	
+	
+	// Write back -> Ocorre apenas quando acontece miss
+	if (hit == 0 || valido[hitIndex] == 0) begin
+		if (hit == 1 && valido[hitIndex] == 0 && dirty[hitIndex] == 1) begin // Caso de miss por conta do valido = 0 (read)
+			#4 mp_clock = 0;
+			mp_address = mc_address_aux[0];
+			mp_data = mc_address_aux[1];			
+			mp_wren = 1;
+			mp_clock = 1;
+			#2 mp_clock = 0; mp_wren = 0;
+			
+			dirty[hitIndex] = 0;
+		end
+		else begin
+			if (dirty[lastLRU] == 1 && skipWB == 0) begin // Caso miss normal
+				#4 mp_clock = 0;
+				mp_address = mc_address_aux[0];
+				mp_data = mc_address_aux[1];
+				mp_wren = 1;
+				mp_clock = 1;
+				#2 mp_clock = 0; mp_wren = 0;
+				
+				if (mc_wren == 0) dirty[lastLRU] = 0; // Caso seja read, setamos o dirty para 0
+			end
+		end		
 	end
 	
 	
 	// Alteracoes do LRU
 	if (hit == 1) begin
-		if (lru[hitIndex] == 2) begin // Retirado = 2
-			for (i=0; i<4; i=i+1) begin
-				if (i != hitIndex && lru[hitIndex] != 3) lru[i] = lru[i] + 1;
-				else lru[hitIndex] = 0;					
-			end
-		end
-		else if (lru[hitIndex] == 1) begin // Retirado = 1
-			for (i=0; i<4; i=i+1) begin
-				if (i != hitIndex && lru[i] < 2) lru[i] = lru[i] + 1;					
-				else lru[hitIndex] = 0;	
-			end
+		lruValue = lru[hitIndex];
+		for (i=0; i<4; i=i+1) begin // Retirado valores de 0 a 2
+			if (i != hitIndex && lru[i] < lruValue) lru[i] = lru[i] + 1;
+			else lru[hitIndex] = 0;					
 		end
 	end
 	else // Retirado mais velho = 3
 		for (i=0; i<4; i=i+1) begin
-			if (i != hitIndex) lru[i] = lru[i] + 1;
-			else lru[hitIndex] = 0;					
+			if (i != lastLRU) lru[i] = lru[i] + 1;
+			else lru[lastLRU] = 0;					
 		end
 end
 
