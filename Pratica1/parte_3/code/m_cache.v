@@ -17,7 +17,7 @@ reg [1:0] lru [0:3];
 reg [7:0] mc_out;
 
 // Intermediarias
-integer i, lastLRU, oldLRU, hitIndex, hit, break, lruValue, skipWB;
+integer i, lastAccessedLRU, hitIndex, hit, break, lruValue, skipWB;
 reg [7:0] mc_address_aux [0:1];
 
 // Valores iniciais da memoria cache definidos a partir do codigo teste
@@ -36,7 +36,7 @@ end
 
 
 always@(posedge clock) begin
-	i=0; lastLRU=0; oldLRU=0; hitIndex=0; hit=0; break=0; lruValue=0; skipWB=0; // Variaveis intermediarias
+	i=0; lastAccessedLRU=0; hitIndex=0; hit=0; break=0; lruValue=0; skipWB=0; // Variaveis intermediarias
 	mc_wren = test_wren; mc_out = 0; // Controle da cache
 	
 	// Verificar se houve hit
@@ -61,9 +61,8 @@ always@(posedge clock) begin
 	
 	// Procurar LRU mais antigo
 	for (i=0; i<4; i=i+1) begin
-		if(oldLRU < lru[i]) begin
-			oldLRU = lru[i];
-			lastLRU = i;
+		if(lru[i] == 3) begin
+			lastAccessedLRU = i;
 		end
 	end
 	
@@ -74,7 +73,7 @@ always@(posedge clock) begin
 			if (valido[hitIndex] == 1) begin // Hit
 				mc_out = mc_address[hitIndex][1];
 			end
-			else begin // Ocorreu hit, porem o valido = 0
+			else begin // Ocorreu hit, porem o valido = 0, logo miss
 				mc_address_aux[0] = mc_address[hitIndex][0];
 				mc_address_aux[1] = mc_address[hitIndex][1];
 				
@@ -91,8 +90,8 @@ always@(posedge clock) begin
 			end
 		end
 		else begin	// Ocorreu miss e valido = 1
-			mc_address_aux[0] = mc_address[lastLRU][0];
-			mc_address_aux[1] = mc_address[lastLRU][1];
+			mc_address_aux[0] = mc_address[lastAccessedLRU][0];
+			mc_address_aux[1] = mc_address[lastAccessedLRU][1];
 			
 			mp_address = test_tag;
 			mp_clock = 1;
@@ -100,9 +99,9 @@ always@(posedge clock) begin
 			#2 mp_clock = 0; mp_wren = 0;
 			
 			
-			mc_address[lastLRU][0] = mp_address;
-			mc_address[lastLRU][1] = mp_out;
-			#2 mc_out = mc_address[lastLRU][1];
+			mc_address[lastAccessedLRU][0] = mp_address;
+			mc_address[lastAccessedLRU][1] = mp_out;
+			#2 mc_out = mc_address[lastAccessedLRU][1];
 		end
 	end
 	
@@ -114,14 +113,14 @@ always@(posedge clock) begin
 			dirty[hitIndex] = 1;
 		end
 		else begin
-			mc_address_aux[0] = mc_address[lastLRU][0];
-			mc_address_aux[1] = mc_address[lastLRU][1];
+			mc_address_aux[0] = mc_address[lastAccessedLRU][0];
+			mc_address_aux[1] = mc_address[lastAccessedLRU][1];
 			
-			mc_address[lastLRU][0] = test_tag;
-			mc_address[lastLRU][1] = test_data;
+			mc_address[lastAccessedLRU][0] = test_tag;
+			mc_address[lastAccessedLRU][1] = test_data;
 			
-			if (dirty[lastLRU] == 0) begin
-				dirty[lastLRU] = 1; skipWB = 1;
+			if (dirty[lastAccessedLRU] == 0) begin
+				dirty[lastAccessedLRU] = 1; skipWB = 1;
 			end
 		end
 	end
@@ -140,7 +139,7 @@ always@(posedge clock) begin
 			dirty[hitIndex] = 0;
 		end
 		else begin
-			if (dirty[lastLRU] == 1 && skipWB == 0) begin // Caso miss normal
+			if (dirty[lastAccessedLRU] == 1 && skipWB == 0) begin // Caso miss normal
 				#4 mp_clock = 0;
 				mp_address = mc_address_aux[0];
 				mp_data = mc_address_aux[1];
@@ -148,7 +147,7 @@ always@(posedge clock) begin
 				mp_clock = 1;
 				#2 mp_clock = 0; mp_wren = 0;
 				
-				if (mc_wren == 0) dirty[lastLRU] = 0; // Caso seja read, setamos o dirty para 0
+				if (mc_wren == 0) dirty[lastAccessedLRU] = 0; // Caso seja read, setamos o dirty para 0
 			end
 		end		
 	end
@@ -157,15 +156,15 @@ always@(posedge clock) begin
 	// Alteracoes do LRU
 	if (hit == 1) begin
 		lruValue = lru[hitIndex];
-		for (i=0; i<4; i=i+1) begin // Retirado valores de 0 a 2
+		for (i=0; i<4; i=i+1) begin // Retirado valores de 0 a 3
 			if (i != hitIndex && lru[i] < lruValue) lru[i] = lru[i] + 1;
 			else lru[hitIndex] = 0;					
 		end
 	end
 	else // Retirado mais velho = 3
 		for (i=0; i<4; i=i+1) begin
-			if (i != lastLRU) lru[i] = lru[i] + 1;
-			else lru[lastLRU] = 0;					
+			if (i != lastAccessedLRU) lru[i] = lru[i] + 1;
+			else lru[lastAccessedLRU] = 0;					
 		end
 end
 
