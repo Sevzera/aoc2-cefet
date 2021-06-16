@@ -17,7 +17,7 @@ reg [1:0] lru [0:3];
 reg [7:0] mc_out;
 
 // Intermediarias
-integer i, lastAccessedLRU, hitIndex, hit, break, lruValue, skipWB;
+integer i, lastAccessedLRU, hitIndex, hitTag, break, lruValue, skipWB;
 reg [7:0] mc_address_aux [0:1];
 
 // Valores iniciais da memoria cache definidos a partir do codigo teste
@@ -36,7 +36,7 @@ end
 
 
 always@(posedge clock) begin
-	i=0; lastAccessedLRU=0; hitIndex=0; hit=0; break=0; lruValue=0; skipWB=0; // Variaveis intermediarias
+	i=0; lastAccessedLRU=0; hitIndex=0; hitTag=0; break=0; lruValue=0; skipWB=0; // Variaveis intermediarias
 	mc_wren = test_wren; mc_out = 0; // Controle da cache
 	
 	// Verificar se houve hit
@@ -44,16 +44,16 @@ always@(posedge clock) begin
 		if(break == 0) begin
 			if(test_tag == mc_address[i][0] && valido[i] == 1) begin // Hit
 				hitIndex = i;
-				hit = 1;
+				hitTag = 1;
 				break = 1;
 			end
 			else if(test_tag == mc_address[i][0] && valido[i] == 0) begin // Miss
 				hitIndex = i;
-				hit = 1;
+				hitTag = 1;
 				break = 1;
 			end
 			else begin // Miss
-				hit = 0;
+				hitTag = 0;
 			end
 		end
 	end
@@ -68,12 +68,12 @@ always@(posedge clock) begin
 	
 	
 	// Operacao de read
-	if (mc_wren == 0) begin
-		if (hit == 1) begin
-			if (valido[hitIndex] == 1) begin // Hit
-				mc_out = mc_address[hitIndex][1];
+	if (mc_wren == 0) begin // Sinal setado para read
+		if (hitTag == 1) begin // Tags equivalentes
+			if (valido[hitIndex] == 1) begin // Bit de validade alto
+				mc_out = mc_address[hitIndex][1]; // Hit, logo, dado encaminhado para a saída da cache
 			end
-			else begin // Ocorreu hit, porem o valido = 0, logo miss
+			else begin // Ocorreu a equivalencia entre as tags, porem o bit de validade = 0, logo, miss
 				mc_address_aux[0] = mc_address[hitIndex][0];
 				mc_address_aux[1] = mc_address[hitIndex][1];
 				
@@ -89,7 +89,7 @@ always@(posedge clock) begin
 				valido[hitIndex] = 1;
 			end
 		end
-		else begin	// Ocorreu miss e valido = 1
+		else begin	// Tags diferentes, logo, miss
 			mc_address_aux[0] = mc_address[lastAccessedLRU][0];
 			mc_address_aux[1] = mc_address[lastAccessedLRU][1];
 			
@@ -107,10 +107,10 @@ always@(posedge clock) begin
 	
 	
 	// Operacao de write
-	else begin
-		if (hit == 1) begin
-			mc_address[hitIndex][1] = test_data;
-			dirty[hitIndex] = 1;
+	else begin // Sinal setado para write
+		if (hitTag == 1) begin // Tags equivalentes
+			mc_address[hitIndex][1] = test_data; // Escrita do dado de entrada
+			dirty[hitIndex] = 1; // Bit dirty setado para nivel alto
 		end
 		else begin
 			mc_address_aux[0] = mc_address[lastAccessedLRU][0];
@@ -127,8 +127,8 @@ always@(posedge clock) begin
 	
 	
 	// Write back -> Ocorre apenas quando acontece miss
-	if (hit == 0 || valido[hitIndex] == 0) begin
-		if (hit == 1 && valido[hitIndex] == 0 && dirty[hitIndex] == 1) begin // Caso de miss por conta do valido = 0 (read)
+	if (hitTag == 0 || valido[hitIndex] == 0) begin // Se alguma condicao gerou um miss
+		if (hitTag == 1 && valido[hitIndex] == 0 && dirty[hitIndex] == 1) begin // Caso de miss por conta do bit de validade = 0 (read)
 			#4 mp_clock = 0;
 			mp_address = mc_address_aux[0];
 			mp_data = mc_address_aux[1];			
@@ -139,7 +139,7 @@ always@(posedge clock) begin
 			dirty[hitIndex] = 0;
 		end
 		else begin
-			if (dirty[lastAccessedLRU] == 1 && skipWB == 0) begin // Caso miss normal
+			if (dirty[lastAccessedLRU] == 1 && skipWB == 0) begin // Caso de miss usual
 				#4 mp_clock = 0;
 				mp_address = mc_address_aux[0];
 				mp_data = mc_address_aux[1];
@@ -147,14 +147,14 @@ always@(posedge clock) begin
 				mp_clock = 1;
 				#2 mp_clock = 0; mp_wren = 0;
 				
-				if (mc_wren == 0) dirty[lastAccessedLRU] = 0; // Caso seja read, setamos o dirty para 0
+				if (mc_wren == 0) dirty[lastAccessedLRU] = 0; // Caso read, setamos o dirty para 0
 			end
 		end		
 	end
 	
 	
 	// Alteracoes do LRU
-	if (hit == 1) begin
+	if (hitTag == 1) begin
 		lruValue = lru[hitIndex];
 		for (i=0; i<4; i=i+1) begin // Retirado valores de 0 a 3
 			if (i != hitIndex && lru[i] < lruValue) lru[i] = lru[i] + 1;
