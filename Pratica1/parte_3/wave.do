@@ -19,7 +19,7 @@ add wave -noupdate -color {Cornflower Blue} -radix unsigned /m_cache/dirty
 add wave -noupdate -color {Cornflower Blue} -radix unsigned /m_cache/lru
 add wave -noupdate -color Yellow -radix unsigned /m_cache/mc_out
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {717 ps} 0}
+WaveRestoreCursors {{Cursor 1} {150 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -35,4 +35,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {1348 ps}
+WaveRestoreZoom {0 ps} {916 ps}
