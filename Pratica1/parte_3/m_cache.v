@@ -90,7 +90,6 @@ always@(posedge clock) begin
 				#2 mc_out = mc_address[hitIndex][1];
 				
 				valido[hitIndex] = 1;
-				
 				Hit = 0;
 			end
 		end
@@ -102,7 +101,6 @@ always@(posedge clock) begin
 			mp_clock = 1;
 			mp_wren = 0;
 			#2 mp_clock = 0; mp_wren = 0;
-			
 			
 			mc_address[lastAccessedLRU][0] = mp_address;
 			mc_address[lastAccessedLRU][1] = mp_out;
