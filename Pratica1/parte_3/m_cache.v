@@ -73,7 +73,10 @@ always@(posedge clock) begin
 		if (hitTag == 1) begin // Tags equivalentes
 			if (valido[hitIndex] == 1) begin // Bit de validade alto
 				mc_out = mc_address[hitIndex][1]; // Hit, logo, dado encaminhado para a saída da cache
+<<<<<<< HEAD
 				Hit = 1;
+=======
+>>>>>>> e5a95e9aa9f4b270a3ac2e9d94c821d4064d30c7
 			end
 			else begin // Ocorreu a equivalencia entre as tags, porem o bit de validade = 0, logo, miss
 				mc_address_aux[0] = mc_address[hitIndex][0];
@@ -114,12 +117,18 @@ always@(posedge clock) begin
 	
 	// Operacao de write
 	else begin // Sinal setado para write
+<<<<<<< HEAD
 		if (hitTag == 1) begin // Tags equivalente, logo hit
 			mc_address[hitIndex][1] = test_data; // Escrita do dado de entrada
 			dirty[hitIndex] = 1; // Bit dirty setado para nivel alto
 			
 			//#2 mc_out = mc_address[hitIndex][1];
 			Hit = 1;
+=======
+		if (hitTag == 1) begin // Tags equivalentes
+			mc_address[hitIndex][1] = test_data; // Escrita do dado de entrada
+			dirty[hitIndex] = 1; // Bit dirty setado para nivel alto
+>>>>>>> e5a95e9aa9f4b270a3ac2e9d94c821d4064d30c7
 		end
 		else begin // Tag nao encontrada, logo miss
 			mc_address_aux[0] = mc_address[lastAccessedLRU][0];
@@ -139,8 +148,13 @@ always@(posedge clock) begin
 	
 	
 	// Write back -> Ocorre apenas quando acontece miss
+<<<<<<< HEAD
 	if (Hit == 0) begin // Se a cache gerou um miss
 		if (dirty[lastAccessedLRU] == 1 && skipWB == 0) begin // Caso bloco esteja sujo gera write back
+=======
+	if (hitTag == 0 || valido[hitIndex] == 0) begin // Se alguma condicao gerou um miss
+		if (hitTag == 1 && valido[hitIndex] == 0 && dirty[hitIndex] == 1) begin // Caso de miss por conta do bit de validade = 0 (read)
+>>>>>>> e5a95e9aa9f4b270a3ac2e9d94c821d4064d30c7
 			#4 mp_clock = 0;
 			mp_address = mc_address_aux[0];
 			mp_data = mc_address_aux[1];
@@ -148,13 +162,34 @@ always@(posedge clock) begin
 			mp_clock = 1;
 			#2 mp_clock = 0; mp_wren = 0;
 			
+<<<<<<< HEAD
 			if (mc_wren == 0) dirty[lastAccessedLRU] = 0; // Caso read, setamos o dirty para 0
 		end			
+=======
+			dirty[hitIndex] = 0;
+		end
+		else begin
+			if (dirty[lastAccessedLRU] == 1 && skipWB == 0) begin // Caso de miss usual
+				#4 mp_clock = 0;
+				mp_address = mc_address_aux[0];
+				mp_data = mc_address_aux[1];
+				mp_wren = 1;
+				mp_clock = 1;
+				#2 mp_clock = 0; mp_wren = 0;
+				
+				if (mc_wren == 0) dirty[lastAccessedLRU] = 0; // Caso read, setamos o dirty para 0
+			end
+		end		
+>>>>>>> e5a95e9aa9f4b270a3ac2e9d94c821d4064d30c7
 	end
 	
 	
 	// Alteracoes do LRU
+<<<<<<< HEAD
 	if (hitTag == 1) begin // Caso a tag seja encontrada
+=======
+	if (hitTag == 1) begin
+>>>>>>> e5a95e9aa9f4b270a3ac2e9d94c821d4064d30c7
 		lruValue = lru[hitIndex];
 		for (i=0; i<4; i=i+1) begin // Retirado valores de 0 a 3
 			if (i != hitIndex && lru[i] < lruValue) lru[i] = lru[i] + 1;
