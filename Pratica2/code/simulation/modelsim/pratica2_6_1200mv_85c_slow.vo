@@ -1,0 +1,109 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
+
+// DATE "07/19/2021 14:22:01"
+
+// 
+// Device: Altera EP4CGX15BF14C6 Package FBGA169
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module pratica2 (
+	MClock,
+	PClock,
+	Resetn,
+	Run);
+input 	MClock;
+input 	PClock;
+input 	Resetn;
+input 	Run;
+
+// Design Ports Information
+// MClock	=>  Location: PIN_B6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// PClock	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// Resetn	=>  Location: PIN_N12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// Run	=>  Location: PIN_A6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("pratica2_6_1200mv_85c_v_slow.sdo");
+// synopsys translate_on
+
+wire \MClock~input_o ;
+wire \PClock~input_o ;
+wire \Resetn~input_o ;
+wire \Run~input_o ;
+
+
+// Location: IOIBUF_X14_Y31_N8
+cycloneiv_io_ibuf \MClock~input (
+	.i(MClock),
+	.ibar(gnd),
+	.o(\MClock~input_o ));
+// synopsys translate_off
+defparam \MClock~input .bus_hold = "false";
+defparam \MClock~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X33_Y28_N8
+cycloneiv_io_ibuf \PClock~input (
+	.i(PClock),
+	.ibar(gnd),
+	.o(\PClock~input_o ));
+// synopsys translate_off
+defparam \PClock~input .bus_hold = "false";
+defparam \PClock~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X29_Y0_N1
+cycloneiv_io_ibuf \Resetn~input (
+	.i(Resetn),
+	.ibar(gnd),
+	.o(\Resetn~input_o ));
+// synopsys translate_off
+defparam \Resetn~input .bus_hold = "false";
+defparam \Resetn~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X10_Y31_N1
+cycloneiv_io_ibuf \Run~input (
+	.i(Run),
+	.ibar(gnd),
+	.o(\Run~input_o ));
+// synopsys translate_off
+defparam \Run~input .bus_hold = "false";
+defparam \Run~input .simulate_z_as = "z";
+// synopsys translate_on
+
+endmodule

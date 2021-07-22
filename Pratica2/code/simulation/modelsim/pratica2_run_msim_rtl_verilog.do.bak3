@@ -1,0 +1,16 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/pratica2.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/proc.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/upcount.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/regn.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/multiplex.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/dec3to8.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/alu.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Victor/Documents/CEFET/2021.1/AOC\ 2/_Laoc/Pratica_II/code_2 {C:/Users/Victor/Documents/CEFET/2021.1/AOC 2/_Laoc/Pratica_II/code_2/romlpm.v}
+
