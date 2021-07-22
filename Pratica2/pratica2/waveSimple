@@ -1,0 +1,45 @@
+onerror {resume}
+quietly WaveActivateNextPane {} 0
+add wave -noupdate /pratica2/MClock
+add wave -noupdate /pratica2/PClock
+add wave -noupdate /pratica2/Resetn
+add wave -noupdate /pratica2/Run
+add wave -noupdate -color Cyan /pratica2/DIN
+add wave -noupdate -divider Processador
+add wave -noupdate /pratica2/proc/mem
+add wave -noupdate /pratica2/proc/addrM
+add wave -noupdate /pratica2/proc/doutM
+add wave -noupdate /pratica2/proc/wM
+add wave -noupdate /pratica2/proc/BusWires
+add wave -noupdate -color {Cornflower Blue} -radix unsigned /pratica2/proc/R0
+add wave -noupdate -color {Cornflower Blue} -radix unsigned /pratica2/proc/R1
+add wave -noupdate -color {Cornflower Blue} -radix unsigned /pratica2/proc/R2
+add wave -noupdate -color {Cornflower Blue} -radix unsigned /pratica2/proc/R3
+add wave -noupdate /pratica2/proc/pc
+add wave -noupdate -divider {Registradores de controle}
+add wave -noupdate -color {Medium Orchid} -radix unsigned -childformat {{{/pratica2/proc/A[15]} -radix unsigned} {{/pratica2/proc/A[14]} -radix unsigned} {{/pratica2/proc/A[13]} -radix unsigned} {{/pratica2/proc/A[12]} -radix unsigned} {{/pratica2/proc/A[11]} -radix unsigned} {{/pratica2/proc/A[10]} -radix unsigned} {{/pratica2/proc/A[9]} -radix unsigned} {{/pratica2/proc/A[8]} -radix unsigned} {{/pratica2/proc/A[7]} -radix unsigned} {{/pratica2/proc/A[6]} -radix unsigned} {{/pratica2/proc/A[5]} -radix unsigned} {{/pratica2/proc/A[4]} -radix unsigned} {{/pratica2/proc/A[3]} -radix unsigned} {{/pratica2/proc/A[2]} -radix unsigned} {{/pratica2/proc/A[1]} -radix unsigned} {{/pratica2/proc/A[0]} -radix unsigned}} -subitemconfig {{/pratica2/proc/A[15]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[14]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[13]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[12]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[11]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[10]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[9]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[8]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[7]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[6]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[5]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[4]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[3]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[2]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[1]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/A[0]} {-color {Medium Orchid} -height 15 -radix unsigned}} /pratica2/proc/A
+add wave -noupdate -color {Medium Orchid} -radix unsigned -childformat {{{/pratica2/proc/G[15]} -radix unsigned} {{/pratica2/proc/G[14]} -radix unsigned} {{/pratica2/proc/G[13]} -radix unsigned} {{/pratica2/proc/G[12]} -radix unsigned} {{/pratica2/proc/G[11]} -radix unsigned} {{/pratica2/proc/G[10]} -radix unsigned} {{/pratica2/proc/G[9]} -radix unsigned} {{/pratica2/proc/G[8]} -radix unsigned} {{/pratica2/proc/G[7]} -radix unsigned} {{/pratica2/proc/G[6]} -radix unsigned} {{/pratica2/proc/G[5]} -radix unsigned} {{/pratica2/proc/G[4]} -radix unsigned} {{/pratica2/proc/G[3]} -radix unsigned} {{/pratica2/proc/G[2]} -radix unsigned} {{/pratica2/proc/G[1]} -radix unsigned} {{/pratica2/proc/G[0]} -radix unsigned}} -subitemconfig {{/pratica2/proc/G[15]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[14]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[13]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[12]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[11]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[10]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[9]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[8]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[7]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[6]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[5]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[4]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[3]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[2]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[1]} {-color {Medium Orchid} -height 15 -radix unsigned} {/pratica2/proc/G[0]} {-color {Medium Orchid} -height 15 -radix unsigned}} /pratica2/proc/G
+add wave -noupdate /pratica2/proc/I
+add wave -noupdate /pratica2/proc/Yreg
+add wave -noupdate /pratica2/proc/Xreg
+add wave -noupdate -divider {Sinais de controle}
+add wave -noupdate -color Red /pratica2/proc/TstepQ
+add wave -noupdate /pratica2/Done
+TreeUpdate [SetDefaultTree]
+WaveRestoreCursors {{Cursor 1} {44 ps} 0}
+quietly wave cursor active 1
+configure wave -namecolwidth 150
+configure wave -valuecolwidth 100
+configure wave -justifyvalue left
+configure wave -signalnamewidth 1
+configure wave -snapdistance 10
+configure wave -datasetprefix 0
+configure wave -rowmargin 4
+configure wave -childrowmargin 2
+configure wave -gridoffset 0
+configure wave -gridperiod 1
+configure wave -griddelta 40
+configure wave -timeline 0
+configure wave -timelineunits ns
+update
+WaveRestoreZoom {0 ps} {198 ps}
