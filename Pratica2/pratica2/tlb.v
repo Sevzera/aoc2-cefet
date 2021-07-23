@@ -37,8 +37,8 @@ module tlb (addr, Clock, out);
 			physicalAddress[7] = 16'b0001000011000000;		
 		*/
 		
-		/*
-		// Loop 2
+		
+		// Loop 2 - Certo, onde R3 = R4, R2 = R2, R0 = R5, pc = R7
 			physicalAddress[0] = 16'b0000100001000000;
 			physicalAddress[1] = 16'b0000000000000001;
 			physicalAddress[2] = 16'b0000110001000000;			
@@ -46,8 +46,8 @@ module tlb (addr, Clock, out);
 			physicalAddress[4] = 16'b1000000000000000;
 			physicalAddress[5] = 16'b0100110111000000;
 			physicalAddress[6] = 16'b0001000011000000;
-		*/	
-				
+		
+		/*
 		// Programa normal
 			physicalAddress[0] = 16'b0000000001000000; // MVI R0, #2
 			physicalAddress[1] = 16'b0000000000000010; // #2
@@ -87,7 +87,7 @@ module tlb (addr, Clock, out);
 			physicalAddress[35]= 16'b0110010111000000; // SUB R1, R3
 			physicalAddress[36]= 16'b0100000011000000; // MVNZ R0, R2
 			physicalAddress[37]= 16'b0010000110000000; // ADD R0, R1
-		
+		*/
 	end
 	
 	always @(*) begin
