@@ -22,9 +22,8 @@ add wave -noupdate -color {Cornflower Blue} -radix unsigned /pratica2/proc/R2
 add wave -noupdate -color {Cornflower Blue} -radix unsigned /pratica2/proc/R3
 add wave -noupdate -color {Medium Orchid} -radix unsigned /pratica2/proc/A
 add wave -noupdate -color {Medium Orchid} -radix unsigned /pratica2/proc/G
-add wave -noupdate -color Gold -radix unsigned /pratica2/proc/aluOut
-add wave -noupdate /pratica2/proc/IR
 add wave -noupdate /pratica2/proc/I
+add wave -noupdate /pratica2/proc/IR
 add wave -noupdate -divider {Sinais processador}
 add wave -noupdate -color Red /pratica2/proc/TstepQ
 add wave -noupdate -radix unsigned /pratica2/proc/aIn
@@ -37,7 +36,7 @@ add wave -noupdate /pratica2/proc/regOut
 add wave -noupdate /pratica2/proc/regIn
 add wave -noupdate /pratica2/proc/aluSignal
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {380 ps} 0}
+WaveRestoreCursors {{Cursor 1} {209 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100

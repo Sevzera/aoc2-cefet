@@ -1,8 +1,7 @@
 module pratica2 (MClock, PClock, Resetn, Run);
 	
 	input MClock, PClock, Resetn, Run;
-	
-	
+		
 	wire [15:0] DIN, BusWires;
 	wire [5:0] addrCount;
 	wire Resetn, Run, Done;
