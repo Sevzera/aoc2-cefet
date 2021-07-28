@@ -36,7 +36,7 @@ module tlb (addr, Clock, out);
 			physicalAddress[6] = 16'b0100110111000000;
 			physicalAddress[7] = 16'b0001000011000000;		
 		*/
-	
+		/*
 		// Loop 2
 			physicalAddress[0] = 16'b0000100001000000;
 			physicalAddress[1] = 16'b0000000000000001;
@@ -45,7 +45,7 @@ module tlb (addr, Clock, out);
 			physicalAddress[4] = 16'b1000000000000000;
 			physicalAddress[5] = 16'b0100110111000000;
 			physicalAddress[6] = 16'b0001000011000000;
-			
+		*/	
 		/*
 		// Programa normal
 			physicalAddress[0] = 16'b0000000001000000; // MVI R0, #2
