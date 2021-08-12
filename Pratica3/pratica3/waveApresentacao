@@ -1,0 +1,51 @@
+onerror {resume}
+quietly WaveActivateNextPane {} 0
+add wave -noupdate /Tomasulo/Clock
+add wave -noupdate -divider RS
+add wave -noupdate -color Cyan /Tomasulo/control/Busy
+add wave -noupdate -color Cyan /Tomasulo/control/Exec
+add wave -noupdate -color {Dark Slate Blue} -radix unsigned /Tomasulo/control/OpCode
+add wave -noupdate -color {Dark Slate Blue} -radix unsigned /Tomasulo/control/RegDestino
+add wave -noupdate -color {Dark Slate Blue} -radix unsigned /Tomasulo/control/Vi
+add wave -noupdate -color {Dark Slate Blue} -radix unsigned /Tomasulo/control/Vj
+add wave -noupdate -color {Dark Slate Blue} -radix unsigned /Tomasulo/control/Qi
+add wave -noupdate -color {Dark Slate Blue} -radix unsigned /Tomasulo/control/Qj
+add wave -noupdate -radix unsigned /Tomasulo/control/Time
+add wave -noupdate -divider Registradores
+add wave -noupdate -color Sienna -label R6 -radix unsigned {/Tomasulo/control/RegData[5]}
+add wave -noupdate -color Sienna -label R5 -radix unsigned {/Tomasulo/control/RegData[4]}
+add wave -noupdate -color Sienna -label R4 -radix unsigned {/Tomasulo/control/RegData[3]}
+add wave -noupdate -color Sienna -label R3 -radix unsigned {/Tomasulo/control/RegData[2]}
+add wave -noupdate -color Sienna -label R2 -radix unsigned {/Tomasulo/control/RegData[1]}
+add wave -noupdate -color Sienna -label R1 -radix unsigned {/Tomasulo/control/RegData[0]}
+add wave -noupdate -divider AddSub
+add wave -noupdate -radix unsigned /Tomasulo/control/Ry_Valor_AddSub
+add wave -noupdate -radix unsigned /Tomasulo/control/Rx_Valor_AddSub
+add wave -noupdate -color Gray55 -radix unsigned /Tomasulo/control/Result_AddSub
+add wave -noupdate -color Gray55 -format Literal -radix unsigned /Tomasulo/control/Done_AddSub
+add wave -noupdate -divider MulDiv
+add wave -noupdate -radix unsigned /Tomasulo/control/Ry_Valor_MulDiv
+add wave -noupdate -radix unsigned /Tomasulo/control/Rx_Valor_MulDiv
+add wave -noupdate -color {Light Blue} -radix unsigned /Tomasulo/control/Result_MulDiv
+add wave -noupdate -color {Light Blue} -format Literal -radix unsigned /Tomasulo/control/Done_MulDiv
+add wave -noupdate -divider CDB
+add wave -noupdate -radix unsigned /Tomasulo/control/CDB
+add wave -noupdate -color {Blue Violet} /Tomasulo/control/CDB_Control
+TreeUpdate [SetDefaultTree]
+WaveRestoreCursors {{Cursor 1} {0 ps} 0}
+quietly wave cursor active 1
+configure wave -namecolwidth 150
+configure wave -valuecolwidth 100
+configure wave -justifyvalue left
+configure wave -signalnamewidth 1
+configure wave -snapdistance 10
+configure wave -datasetprefix 0
+configure wave -rowmargin 4
+configure wave -childrowmargin 2
+configure wave -gridoffset 0
+configure wave -gridperiod 1
+configure wave -griddelta 40
+configure wave -timeline 0
+configure wave -timelineunits ns
+update
+WaveRestoreZoom {0 ps} {2 ns}
