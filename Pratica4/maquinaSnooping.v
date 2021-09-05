@@ -8,7 +8,7 @@ module maquinaSnooping (maquina, op, estadoAtual, entradaBarramento, novoEstado,
 	output reg [1:0]saidaBarramento;
 	output reg writeBack, abortAccessMemory;
 	
-   // Maquina
+   	// Maquina
 	parameter atua = 1'b0;
 	parameter reage = 1'b1;
 	
@@ -20,7 +20,7 @@ module maquinaSnooping (maquina, op, estadoAtual, entradaBarramento, novoEstado,
 	// Mensagens
 	parameter invalidar = 2'b00;
 	parameter msgReadMiss = 2'b01;
-	parameter msgWriteHit = 2'b10;
+	parameter msgWriteMiss = 2'b10;
 	parameter semMensagem = 2'b11;
 	
 	// Operacoes	
