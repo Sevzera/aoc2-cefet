@@ -1,12 +1,11 @@
-module maquinaSnooping (maquina, op, estadoAtual, entradaMaquina, novoEstado, saidaMaquina, writeBack, abortAccessMemory);
+module maquinaEmissor (maquina, op, estadoAtual, novoEstado, saidaMaquina, writeBack);
 
 	input maquina;
 	input [1:0]op;
 	input [1:0]estadoAtual;
-	input [1:0]entradaMaquina;
 	output reg [1:0] novoEstado;
 	output reg [1:0] saidaMaquina;
-	output reg writeBack, abortAccessMemory;
+	output reg writeBack;
 	
    // Maquina
 	parameter atua = 1'b0;
@@ -30,13 +29,12 @@ module maquinaSnooping (maquina, op, estadoAtual, entradaMaquina, novoEstado, sa
 	parameter opWriteMiss = 2'b11;
 	
 	// Sempre que ocorrer uma operacao ou entrada no barramento
-	always@(op, entradaMaquina) begin
+	always @ (op) begin
 	
 		// Configuracoes para casos onde nao ocorre mudanca
 		novoEstado = estadoAtual;
 		saidaMaquina = semMensagem;
 		writeBack = 1'b0;
-		abortAccessMemory = 1'b0;
 		
 		// Se for a maquina atuante
 		if(maquina == atua) begin
@@ -101,49 +99,7 @@ module maquinaSnooping (maquina, op, estadoAtual, entradaMaquina, novoEstado, sa
 			endcase
 		end
 		
-		// Se for a maquina ouvinte		
-		else if(maquina == reage) begin
-			// e seu estado no momento for
-			case(estadoAtual)
-				// INVALIDO
-				invalido: begin
-				// Nada acontece, seguem os valores atribuidos no inicio do bloco
-				end
-				// MODIFICADO
-				modificado: begin
-					// Analisa a mensagem e atribui os valores adequados
-					case(entradaMaquina)
-						invalidar: begin
-						end
-						msgReadMiss: begin
-							novoEstado = compartilhado;
-							writeBack = 1'b1;
-							abortAccessMemory = 1'b1;
-						end
-						msgWriteMiss: begin
-							novoEstado = invalido;
-							writeBack = 1'b1;
-							abortAccessMemory = 1'b1;
-						end
-					endcase
-				end
-				// COMPARTILHADO
-				compartilhado: begin
-					// Analisa a mensagem e atribui os valores adequados
-					case(entradaMaquina)
-						invalidar: begin
-							novoEstado = invalido;
-						end
-						msgReadMiss: begin
-						end
-						msgWriteMiss: begin
-							novoEstado = invalido;
-						end
-					endcase
-				end
-			endcase
-		end
-
-	end
+	end // Fim do always
 	
 endmodule
+
