@@ -105,13 +105,13 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 				else begin
 				
 					case(instr[5:3]) 
-						1'b000: cachePos = 0;
-						1'b001: cachePos = 1;
-						1'b010: cachePos = 2;
-						1'b011: cachePos = 3;
-						1'b100: cachePos = 0;
-						1'b101: cachePos = 1;
-						1'b110: cachePos = 2;
+						3'b000: cachePos = 0;
+						3'b001: cachePos = 1;
+						3'b010: cachePos = 2;
+						3'b011: cachePos = 3;
+						3'b100: cachePos = 0;
+						3'b101: cachePos = 1;
+						3'b110: cachePos = 2;
 					endcase
 					
 					m_op = m_opReadMiss;
@@ -166,13 +166,13 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 				else begin
 				
 					case(instr[5:3])
-						1'b000: cachePos = 0;
-						1'b001: cachePos = 1;
-						1'b010: cachePos = 2;
-						1'b011: cachePos = 3;
-						1'b100: cachePos = 0;
-						1'b101: cachePos = 1;
-						1'b110: cachePos = 2;
+						3'b000: cachePos = 0;
+						3'b001: cachePos = 1;
+						3'b010: cachePos = 2;
+						3'b011: cachePos = 3;
+						3'b100: cachePos = 0;
+						3'b101: cachePos = 1;
+						3'b110: cachePos = 2;
 					endcase
 				
 					m_op = m_opWriteMiss;
@@ -210,7 +210,7 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 			
 			// Se encontrar a posicao
 			if (Hit) begin
-				#10;
+				#15;
 				maquina = 1'b1;
 				m_estadoCache = Estado[cachePos];
 				m_entradaMaquina = entradaMaquina;

@@ -25,7 +25,7 @@ module mem (endereco, read, enderecoWB, dadoWB, WB, out);
 	
 	always @ (posedge read) begin		
 		breakLoop = 0;
-		memorySize = 7;
+		memorySize = 6;
 		memoryPos = 0;
 	
 		for (i=0; i<memorySize; i=i+1) begin
@@ -42,11 +42,11 @@ module mem (endereco, read, enderecoWB, dadoWB, WB, out);
 	
 	always @ (posedge WB) begin
 		breakLoop = 0;
-		memorySize = 3;
+		memorySize = 6;
 		memoryPos = 0;
 	
 		for (i=0; i<memorySize; i=i+1) begin
-			if (breakLoop) begin
+			if (!breakLoop) begin
 				if ( enderecoWB == Tag[i] ) begin
 					memoryPos = i;
 					breakLoop = 1;
