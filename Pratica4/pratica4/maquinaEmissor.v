@@ -1,7 +1,7 @@
 module maquinaEmissor (maquina, op, estadoAtual, novoEstado, saidaMaquina, writeBack);
 
 	input maquina;
-	input [1:0]op;
+	input [2:0]op;
 	input [1:0]estadoAtual;
 	output reg [1:0] novoEstado;
 	output reg [1:0] saidaMaquina;
@@ -23,10 +23,14 @@ module maquinaEmissor (maquina, op, estadoAtual, novoEstado, saidaMaquina, write
 	parameter semMensagem = 2'b11;
 	
 	// Operacoes	
-	parameter opReadHit = 2'b00;
-	parameter opReadMiss = 2'b01;
-	parameter opWriteHit = 2'b10;
-	parameter opWriteMiss = 2'b11;
+	parameter opReadHit = 2'b000;
+	parameter opReadMiss = 2'b001;
+	parameter opWriteHit = 2'b010;
+	parameter opWriteMiss = 2'b011;
+	
+	initial begin
+		writeBack = 1'b0;
+	end
 	
 	// Sempre que ocorrer uma operacao ou entrada no barramento
 	always @ (op) begin
@@ -65,15 +69,17 @@ module maquinaEmissor (maquina, op, estadoAtual, novoEstado, saidaMaquina, write
 						opReadHit: begin
 						end
 						opReadMiss: begin
-							novoEstado = compartilhado;
-							saidaMaquina = msgReadMiss;
 							writeBack = 1'b1;
+							novoEstado = compartilhado;							
+							saidaMaquina = msgReadMiss;
+							#20 writeBack = 1'b0;
 						end						
 						opWriteHit: begin
 						end		
-						opWriteMiss: begin
-							saidaMaquina = msgWriteMiss;
+						opWriteMiss: begin							
 							writeBack = 1'b1;
+							saidaMaquina = msgWriteMiss;
+							#20 writeBack = 1'b0;
 						end	
 					endcase
 				end

@@ -23,7 +23,8 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 	
 	// Maquina de estados
 		reg maquina; // Define se proc e' emissor ou receptor
-		reg [1:0] m_op, m_estadoCache, m_entradaMaquina;
+		reg [1:0] m_estadoCache, m_entradaMaquina;
+		reg [2:0] m_op;
 		wire[1:0] m_novoEstadoEmissor, m_saidaMaquina, m_novoEstadoReceptor;  
 		wire writeBackEmissor, writeBackReceptor, abortAccessMemory;
 		// Mensagens
@@ -32,10 +33,11 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 		parameter msgWriteMiss = 2'b10;
 		parameter semMensagem = 2'b11;
 		// m_operacoes	
-		parameter m_opReadHit = 2'b00;
-		parameter m_opReadMiss = 2'b01;
-		parameter m_opWriteHit = 2'b10;
-		parameter m_opWriteMiss = 2'b11;
+		parameter m_opReadHit = 3'b000;
+		parameter m_opReadMiss = 3'b001;
+		parameter m_opWriteHit = 3'b010;
+		parameter m_opWriteMiss = 3'b011;
+		parameter m_noOp = 3'b111;
 	
 	// Variaveis auxiliares
 		integer i, cacheSize, breakLoop, cachePos, Hit;
@@ -56,9 +58,9 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 			end
 			else if (id_processador == 2'b01) begin
 				Estado[0] = 2'b00; Tag[0] = 3'b000; Dado[0] = 3'b001;
-				Estado[1] = 2'b10; Tag[1] = 3'b101; Dado[1] = 3'b000;	
+				Estado[1] = 2'b01; Tag[1] = 3'b101; Dado[1] = 3'b000;	
 				Estado[2] = 2'b00; Tag[2] = 3'b010; Dado[2] = 3'b001;	
-				Estado[3] = 2'b01; Tag[3] = 3'b011; Dado[3] = 3'b000;	
+				Estado[3] = 2'b10; Tag[3] = 3'b011; Dado[3] = 3'b010;	
 			end
 			else if (id_processador == 2'b10) begin
 				Estado[0] = 2'b10; Tag[0] = 3'b100; Dado[0] = 3'b011;
@@ -70,11 +72,14 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 		end
 			
 		out = 3'b0;
+		WB = 1'b0;
+		m_op = m_noOp;
 	
 		cacheSize = 4;
 		breakLoop = 0;
 		cachePos = 0;
 		Hit = 0;	
+		
 		
 		if (instr[8:7] == id_processador) begin // Processador e' emissor
 			maquina = 1'b0; // Emissor
@@ -94,8 +99,8 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 				
 				// Read hit e bloco nao esta invalido
 				if ( Hit && (Estado[cachePos] != invalido) ) begin
-					m_op = m_opReadHit;
 					m_estadoCache = Estado[cachePos];
+					m_op = m_opReadHit;					
 					#5;
 					saidaMaquina = m_saidaMaquina;
 					
@@ -114,12 +119,12 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 						3'b110: cachePos = 2;
 					endcase
 					
-					m_op = m_opReadMiss;
 					m_estadoCache = Estado[cachePos];
+					m_op = m_opReadMiss;					
 					#5;
 					saidaMaquina = m_saidaMaquina;
 					
-					if (writeBackEmissor) begin
+					if (writeBackEmissor == 1'b1) begin
 						WB = 1'b1;
 						enderecoWB = Tag[cachePos];
 						dadoWB = Dado[cachePos];
@@ -154,8 +159,8 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 				
 				// Write hit e bloco nao esta invalido
 				if ( Hit && (Estado[cachePos] != invalido) ) begin
-					m_op = m_opWriteHit;
 					m_estadoCache = Estado[cachePos];
+					m_op = m_opWriteHit;					
 					#5;
 					saidaMaquina = m_saidaMaquina;
 					
@@ -175,12 +180,12 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 						3'b110: cachePos = 2;
 					endcase
 				
-					m_op = m_opWriteMiss;
 					m_estadoCache = Estado[cachePos];
+					m_op = m_opWriteMiss;					
 					#5;
 					saidaMaquina = m_saidaMaquina;
 					
-					if (writeBackEmissor) begin
+					if (writeBackEmissor == 1'b1) begin
 						WB = 1'b1;
 						enderecoWB = Tag[cachePos];
 						dadoWB = Dado[cachePos];
@@ -217,7 +222,7 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 				#5;
 			
 				// Se houver writeBackReceptor
-				if (writeBackReceptor) begin
+				if (writeBackReceptor == 1'b1) begin
 					WB = 1'b1;
 					enderecoWB = Tag[cachePos];
 					dadoWB = Dado[cachePos];

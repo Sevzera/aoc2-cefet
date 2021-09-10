@@ -22,10 +22,14 @@ module maquinaReceptor (maquina, estadoAtual, entradaMaquina, novoEstado, writeB
 	parameter semMensagem = 2'b11;
 	
 	// Operacoes	
-	parameter opReadHit = 2'b00;
-	parameter opReadMiss = 2'b01;
-	parameter opWriteHit = 2'b10;
-	parameter opWriteMiss = 2'b11;
+	parameter opReadHit = 2'b000;
+	parameter opReadMiss = 2'b001;
+	parameter opWriteHit = 2'b010;
+	parameter opWriteMiss = 2'b011;
+	
+	initial begin
+		writeBack = 1'b0;
+	end
 	
 	always @ (entradaMaquina) begin
 	
@@ -46,15 +50,17 @@ module maquinaReceptor (maquina, estadoAtual, entradaMaquina, novoEstado, writeB
 					case(entradaMaquina)
 						invalidar: begin
 						end
-						msgReadMiss: begin
+						msgReadMiss: begin							
+							writeBack = 1'b1;
+							abortAccessMemory = 1'b1;
 							novoEstado = compartilhado;
-							writeBack = 1'b1;
-							abortAccessMemory = 1'b1;
+							#20 writeBack = 1'b0; abortAccessMemory = 1'b0;
 						end
-						msgWriteMiss: begin
-							novoEstado = invalido;
+						msgWriteMiss: begin							
 							writeBack = 1'b1;
 							abortAccessMemory = 1'b1;
+							novoEstado = invalido;
+							#20 writeBack = 1'b0; abortAccessMemory = 1'b0;
 						end
 					endcase
 				end
@@ -74,7 +80,7 @@ module maquinaReceptor (maquina, estadoAtual, entradaMaquina, novoEstado, writeB
 				end
 			endcase
 		end
-		
+
 	end // Fim do always
 	
 endmodule
