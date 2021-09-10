@@ -56,9 +56,9 @@ module processador (clock, id_processador, instr, entradaMaquina, saidaMaquina, 
 			end
 			else if (id_processador == 2'b01) begin
 				Estado[0] = 2'b00; Tag[0] = 3'b000; Dado[0] = 3'b001;
-				Estado[1] = 2'b10; Tag[1] = 3'b101; Dado[1] = 3'b000;	
+				Estado[1] = 2'b01; Tag[1] = 3'b101; Dado[1] = 3'b000;	
 				Estado[2] = 2'b00; Tag[2] = 3'b010; Dado[2] = 3'b001;	
-				Estado[3] = 2'b01; Tag[3] = 3'b011; Dado[3] = 3'b000;	
+				Estado[3] = 2'b10; Tag[3] = 3'b011; Dado[3] = 3'b010;	
 			end
 			else if (id_processador == 2'b10) begin
 				Estado[0] = 2'b10; Tag[0] = 3'b100; Dado[0] = 3'b011;
