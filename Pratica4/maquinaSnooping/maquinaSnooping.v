@@ -1,4 +1,4 @@
-module maquinaUnica (maquina, op, estadoAtual, entradaBarramento, novoEstado, saidaBarramento, writeBack, abortAccessMemory);
+module maquinaSnooping (maquina, op, estadoAtual, entradaBarramento, novoEstado, saidaBarramento, writeBack, abortAccessMemory);
 
 	input maquina;
 	input [1:0]op;
@@ -7,37 +7,37 @@ module maquinaUnica (maquina, op, estadoAtual, entradaBarramento, novoEstado, sa
 	output reg [1:0] novoEstado;
 	output reg [1:0]saidaBarramento;
 	output reg writeBack, abortAccessMemory;
-
+	
    // Maquina
 	parameter atua = 1'b0;
 	parameter reage = 1'b1;
-
+	
 	// Estados
 	parameter invalido = 2'b00;
 	parameter modificado = 2'b01;
 	parameter compartilhado = 2'b10;
-
+	
 	// Mensagens
 	parameter invalidar = 2'b00;
 	parameter msgReadMiss = 2'b01;
 	parameter msgWriteMiss = 2'b10;
 	parameter semMensagem = 2'b11;
-
+	
 	// Operacoes	
 	parameter opReadHit = 2'b00;
 	parameter opReadMiss = 2'b01;
 	parameter opWriteHit = 2'b10;
 	parameter opWriteMiss = 2'b11;
-
+	
 	// Sempre que ocorrer uma operacao ou entrada no barramento
 	always@(op, entradaBarramento) begin
-
+	
 		// Configuracoes para casos onde nao ocorre mudanca
 		novoEstado = estadoAtual;
 		saidaBarramento = semMensagem;
 		writeBack = 1'b0;
 		abortAccessMemory = 1'b0;
-
+		
 		// Se for a maquina atuante
 		if(maquina == atua) begin
 			// e seu estado no momento for
@@ -96,7 +96,7 @@ module maquinaUnica (maquina, op, estadoAtual, entradaBarramento, novoEstado, sa
 						end			
 				end
 		end
-
+		
 		// Se for a maquina ouvinte		
 		else if(maquina == reage) begin
 				// e seu estado no momento for
@@ -136,5 +136,6 @@ module maquinaUnica (maquina, op, estadoAtual, entradaBarramento, novoEstado, sa
 						end
 				end
 		end
-
 	end
+endmodule
+		
